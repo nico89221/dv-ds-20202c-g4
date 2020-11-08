@@ -1,5 +1,12 @@
 package ar.edu.davinci.dvds20202cg4.controller;
 
-public class TiendaApp {
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
+@RequestMapping(path="/tienda")
+public abstract class TiendaApp {
+
+    
+    // http://localhost:8091/tienda
 }

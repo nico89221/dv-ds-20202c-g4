@@ -65,12 +65,18 @@ public class PrendaServiceImpl implements PrendaService {
 	
 
 	@Override
-	public Page<Prenda> list(Pageable pageable){
+	public Page<Prenda> list(org.springframework.data.domain.Pageable pageable){
 		LOGGER.info("Pagegable: offset: " + ((Pageable) pageable).getOffset() + " - pageSize:" + ((Pageable) pageable).getPageSize());
         return prendaRepository.findAll(pageable);
 		
 		
 		
+	}
+
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return prendaRepository.count();
 	}
 	
 

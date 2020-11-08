@@ -9,11 +9,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 
 import ar.edu.davinci.dvds20202cg4.model.Prenda;
 import ar.edu.davinci.dvds20202cg4.repository.PrendaRepository;
 
 
+
+@Service
 public class PrendaServiceImpl implements PrendaService {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(PrendaServiceImpl.class);
@@ -32,11 +36,7 @@ public class PrendaServiceImpl implements PrendaService {
         return prendaRepository.findAll();
     }
 
-    @Override
-    public Page<Prenda> List(Pageable pageable) {
-        LOGGER.info("Pagegable: offset: " + pageable.getOffset() + " - pageSize:" + pageable.getPageSize());
-        return prendaRepository.findAll(pageable);
-    }
+	
 
     @Override
     public Prenda findById(Long id) {
@@ -60,11 +60,18 @@ public class PrendaServiceImpl implements PrendaService {
 
 	}
 
+	
+	// revisar este metodo
+	
 
 	@Override
-	public Page<Prenda> list(java.awt.print.Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public Page<Prenda> list(Pageable pageable){
+		LOGGER.info("Pagegable: offset: " + ((Pageable) pageable).getOffset() + " - pageSize:" + ((Pageable) pageable).getPageSize());
+        return prendaRepository.findAll(pageable);
+		
+		
+		
 	}
+	
 
 }

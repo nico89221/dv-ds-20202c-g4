@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.davinci.dvds20202cg4.model.Prenda;
 
-@Service
+
 public interface PrendaService {
 
 	public List<Prenda> listAll();
@@ -16,7 +16,7 @@ public interface PrendaService {
 	public Prenda findById(Long id);
 	public Prenda save(Prenda prenda);
 	public void delete(Prenda prenda);
-	Page<Prenda> List(org.springframework.data.domain.Pageable pageable);
+	
 	
 	
 }

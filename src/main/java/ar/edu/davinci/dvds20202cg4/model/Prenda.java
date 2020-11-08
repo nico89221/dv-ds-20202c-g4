@@ -51,3 +51,4 @@ public class Prenda {
     @Column(name = "prd_description")
     private String descripcion;
 }
+  

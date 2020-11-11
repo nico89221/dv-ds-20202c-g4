@@ -1,6 +1,5 @@
 package ar.edu.davinci.dvds20202cg4.service;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -11,22 +10,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 import ar.edu.davinci.dvds20202cg4.model.Prenda;
 import ar.edu.davinci.dvds20202cg4.repository.PrendaRepository;
 
-
-
 @Service
 public class PrendaServiceImpl implements PrendaService {
+    
+    private final Logger LOGGER = LoggerFactory.getLogger(PrendaServiceImpl.class);
 
-	private final Logger LOGGER = LoggerFactory.getLogger(PrendaServiceImpl.class);
-
-	
-	private final PrendaRepository prendaRepository;
-	
-	
-	@Autowired
+    private final PrendaRepository prendaRepository;
+    
+    @Autowired
     public PrendaServiceImpl(final PrendaRepository prendaRepository) {
         this.prendaRepository = prendaRepository;
     }
@@ -36,7 +30,11 @@ public class PrendaServiceImpl implements PrendaService {
         return prendaRepository.findAll();
     }
 
-	
+    @Override
+    public Page<Prenda> list(Pageable pageable) {
+        LOGGER.info("Pagegable: offset: " + pageable.getOffset() + " - pageSize:" + pageable.getPageSize());
+        return prendaRepository.findAll(pageable);
+    }
 
     @Override
     public Prenda findById(Long id) {
@@ -49,35 +47,24 @@ public class PrendaServiceImpl implements PrendaService {
 
     @Override
     public Prenda save(Prenda prenda) {
-        // TODO Auto-generated method stub
         return prendaRepository.save(prenda);
     }
 
-
-	@Override
+    @Override
     public void delete(Prenda prenda) {
         prendaRepository.delete(prenda);
+    }
 
-	}
+    @Override
+    public void delete(Long id) {
+        prendaRepository.deleteById(id);
+    }
+    
+    @Override
+    public long count() {
+        return prendaRepository.count();
+    }
 
-	
-	// revisar este metodo
-	
-
-	@Override
-	public Page<Prenda> list(org.springframework.data.domain.Pageable pageable){
-		LOGGER.info("Pagegable: offset: " + ((Pageable) pageable).getOffset() + " - pageSize:" + ((Pageable) pageable).getPageSize());
-        return prendaRepository.findAll(pageable);
-		
-		
-		
-	}
-
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return prendaRepository.count();
-	}
-	
 
 }
+

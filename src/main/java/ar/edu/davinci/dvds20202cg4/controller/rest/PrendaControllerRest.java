@@ -15,9 +15,9 @@ import ar.edu.davinci.dvds20202cg4.model.Prenda;
 import ar.edu.davinci.dvds20202cg4.service.PrendaService;
 
 @RestController
-public class PrendaController extends TiendaAppRest{
+public class PrendaControllerRest extends TiendaAppRest{
     
-    private final Logger LOGGER = LoggerFactory.getLogger(PrendaController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(PrendaControllerRest.class);
 
     @Autowired
     private PrendaService prendaService;

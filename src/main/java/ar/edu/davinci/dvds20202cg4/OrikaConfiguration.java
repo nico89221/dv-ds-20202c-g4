@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mapping.context.MappingContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ar.edu.davinci.dvds20202cg4.OrikaConfiguration;
 import ar.edu.davinci.dvds20202cg4.controller.rest.request.PrendaInsertRequest;
 import ar.edu.davinci.dvds20202cg4.controller.rest.request.PrendaUpdateRequest;
 import ar.edu.davinci.dvds20202cg4.controller.rest.response.PrendaResponse;
@@ -15,11 +15,10 @@ import ar.edu.davinci.dvds20202cg4.model.Prenda;
 import ma.glasnost.orika.CustomMapper;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 @Configuration
-public class OrikaConfiguration {
+public class OrikaConfiguration<MapperFacade> {
     
     private final Logger LOGGER = LoggerFactory.getLogger(OrikaConfiguration.class);
 

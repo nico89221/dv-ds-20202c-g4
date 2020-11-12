@@ -18,7 +18,7 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 @Configuration
-public class OrikaConfiguration<MapperFacade> {
+public class OrikaConfiguration {
     
     private final Logger LOGGER = LoggerFactory.getLogger(OrikaConfiguration.class);
 

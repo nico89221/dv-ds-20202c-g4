@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ar.edu.davinci.dvds20202cg4.model.Prenda;
+import ar.edu.davinci.dvds20202cg4.model.TipoPrenda;
 import ar.edu.davinci.dvds20202cg4.repository.PrendaRepository;
 
 @Service
@@ -65,6 +66,10 @@ public class PrendaServiceImpl implements PrendaService {
         return prendaRepository.count();
     }
 
+    @Override
+    public List<TipoPrenda> getTipoPrendas() {
+        return TipoPrenda.getTipoPrendas();
+    }
+
 
 }
-

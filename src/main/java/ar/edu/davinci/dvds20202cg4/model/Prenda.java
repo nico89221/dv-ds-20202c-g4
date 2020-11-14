@@ -1,5 +1,6 @@
 package ar.edu.davinci.dvds20202cg4.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 /**
  * Prenda
  * 
- * @author grupo 4
+ * @author Grupo 4
  *
  */
 
@@ -32,7 +33,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Prenda {
+public class Prenda implements Serializable{
+    
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -302068569401023487L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -49,6 +56,11 @@ public class Prenda {
     private TipoPrenda tipo;
     
     @Column(name = "prd_description")
+
     private String descripcion;
+    
+    
+    public BigDecimal getPrecioFinal(){
+          return precioBase; //estado.precioFinal(precioPropio);
+        }
 }
-  

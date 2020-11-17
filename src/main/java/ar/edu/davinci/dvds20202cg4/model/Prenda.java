@@ -55,7 +55,7 @@ public class Prenda implements Serializable{
     @Enumerated(EnumType.STRING)
     private TipoPrenda tipo;
     
-    @Column(name = "prd_description")
+    @Column(name = "prd_descripcion")
 
     private String descripcion;
     

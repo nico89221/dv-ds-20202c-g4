@@ -1,5 +1,6 @@
 package ar.edu.davinci.dvds20202cg4.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.CascadeType;
@@ -34,7 +35,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Item {
+public class Item implements Serializable {
+	
+	/**
+     * 
+     */
+    private static final long serialVersionUID = -904982985155145732L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

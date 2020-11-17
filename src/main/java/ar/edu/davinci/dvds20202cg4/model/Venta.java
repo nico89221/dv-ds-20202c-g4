@@ -1,5 +1,6 @@
 package ar.edu.davinci.dvds20202cg4.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -46,8 +47,13 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public abstract class Venta {
+public abstract class Venta implements Serializable {
     
+	/**
+     * 
+     */
+    private static final long serialVersionUID = -2545181862788343597L;
+		
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")

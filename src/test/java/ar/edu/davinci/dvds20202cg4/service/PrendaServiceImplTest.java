@@ -1,10 +1,10 @@
-
 package ar.edu.davinci.dvds20202cg4.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -62,16 +62,28 @@ class PrendaServiceImplTest {
 
     @Test
     void testFindById() {
-        Prenda prenda = prendaService.findById(4L);
-        
+        Optional<Prenda> prendaOptional = prendaService.findById(4L);
+        Prenda prenda = null;
+        if (prendaOptional.isPresent()) {
+            LOGGER.info("LA PRENDA FUE ENCONTRADA");
+            prenda = prendaOptional.get();
+        } else {
+            LOGGER.info("LA PRENDA NO FUE ENCONTRADA");
+        }            
         assertNotNull(prenda);
         assertEquals(prenda.getDescripcion(), "Pantalon Gabardina Beige");
     }
 
     @Test
     void testFindById_withError() {
-        Prenda prenda = prendaService.findById(0L);
-        
+        Optional<Prenda> prendaOptional = prendaService.findById(0L);
+        Prenda prenda = null;
+        if (prendaOptional.isPresent()) {
+            LOGGER.info("LA PRENDA FUE ENCONTRADA");
+            prenda = prendaOptional.get();
+        } else {
+            LOGGER.info("LA PRENDA NO FUE ENCONTRADA");
+        }        
         assertNull(prenda);
     }
 
@@ -101,11 +113,17 @@ class PrendaServiceImplTest {
         
         LOGGER.info("Prenda count antes delete: " + prendaService.count());
 
-        Prenda prenda = prendaService.findById(2L);
-        prendaService.delete(prenda);
-        
-        LOGGER.info("Prenda count después delete: " + prendaService.count());
-        
+        Optional<Prenda> prendaOptional = prendaService.findById(2L);
+        Prenda prenda = null;
+        if (prendaOptional.isPresent()) {
+            LOGGER.info("LA PRENDA FUE ENCONTRADA");
+            prenda = prendaOptional.get();
+            prendaService.delete(prenda);
+            LOGGER.info("Prenda count después delete: " + prendaService.count());
+        } else {
+            LOGGER.info("LA PRENDA NO FUE ENCONTRADA");
+        }
     }
 
 }
+

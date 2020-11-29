@@ -1,5 +1,6 @@
 package ar.edu.davinci.dvds20202cg4.controller.rest.response;
 
+import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,12 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ClienteResponse {
-    
+public class ItemResponse {
+
     private Long id;
     
-    private String nombre;
-
-    private String apellido;
-
+    private Integer cantidad;
+    
+    private PrendaResponse prenda;
+    
+    private BigDecimal importe;
 }

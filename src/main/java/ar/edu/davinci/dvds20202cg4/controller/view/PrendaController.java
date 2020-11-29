@@ -1,5 +1,7 @@
 package ar.edu.davinci.dvds20202cg4.controller.view;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,11 +77,14 @@ public class PrendaController extends TiendaApp {
         LOGGER.info("prenda: " + prendaId);
 
         ModelAndView mav = new ModelAndView("prendas/edit_prendas");
-        Prenda prenda = prendaService.findById(prendaId);
-        mav.addObject("prenda", prenda);
+        Optional<Prenda> prendaOptional = prendaService.findById(prendaId);
+        Prenda prenda = null;
+        if (prendaOptional.isPresent()) {
+            prenda  = prendaOptional.get();
+            mav.addObject("prenda", prenda);
+            mav.addObject("tipoPrendaActual", prenda.getTipo());
+        }
         mav.addObject("tipoPrendas", prendaService.getTipoPrendas());
-        mav.addObject("tipoPrendaActual", prenda.getTipo());
-
         return mav;
     }
 

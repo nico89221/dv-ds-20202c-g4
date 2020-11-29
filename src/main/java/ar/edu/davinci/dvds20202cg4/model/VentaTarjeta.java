@@ -9,14 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+
 import ar.edu.davinci.dvds20202cg4.model.VentaTarjeta;
-import lombok.Data;
+
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 /**
  * Calcular Venta en Tarjeta
  * 
- * @author frmontero
+ * @author Grupo4
  *
  */
 
@@ -26,14 +28,15 @@ import lombok.experimental.SuperBuilder;
 @Table(name="ventas_tarjeta")
 
 
-@Data
+
+@NoArgsConstructor
 @SuperBuilder
 public class VentaTarjeta extends Venta implements Serializable {
-    
+
     /**
      * 
      */
-    private static final long serialVersionUID = -4940343384573345479L;
+    private static final long serialVersionUID = 7549753306871297143L;
 
     @Column(name = "vtt_cantidad_cuotas")
     private Integer cantidadCuotas;

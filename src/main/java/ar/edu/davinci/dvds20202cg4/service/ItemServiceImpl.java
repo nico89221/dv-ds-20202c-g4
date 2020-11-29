@@ -37,12 +37,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item findById(Long id) {
-        Optional<Item> itemOptional = itemRepository.findById(id);
-        if (itemOptional.isPresent()) {
-            return itemOptional.get();
-        }
-        return null;
+    public Optional<Item> findById(Long id) {
+        return itemRepository.findById(id);
     }
 
     @Override
@@ -66,4 +62,3 @@ public class ItemServiceImpl implements ItemService {
     }
 
 }
-

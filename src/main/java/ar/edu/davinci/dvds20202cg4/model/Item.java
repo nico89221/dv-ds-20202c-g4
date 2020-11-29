@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -47,6 +49,12 @@ public class Item implements Serializable {
     @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "itm_id")
     private Long id;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="itm_vta_id", referencedColumnName="vta_id", nullable = false)
+    @JsonBackReference
+    private Venta venta;
+
     
     @Column(name = "itm_cantidad")
     private Integer cantidad;

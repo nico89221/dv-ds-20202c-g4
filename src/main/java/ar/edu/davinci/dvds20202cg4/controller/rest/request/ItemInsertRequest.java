@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ClienteUpdateRequest {
-        
-    private String nombre;
+public class ItemInsertRequest {
 
-    private String apellido;
+    private Integer cantidad;
+
+    private Long prendaId;
 
 }

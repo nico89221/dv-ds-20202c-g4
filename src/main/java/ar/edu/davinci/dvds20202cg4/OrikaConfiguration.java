@@ -3,8 +3,6 @@ package ar.edu.davinci.dvds20202cg4;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -176,6 +174,7 @@ public class OrikaConfiguration {
                         .id(ventaTarjetaRequest.getClienteId())
                         .build();
                 venta.setCliente(cliente);
+                venta.setCantidadCuotas(ventaTarjetaRequest.getCantidadCuotas());
             }
         }).register();
         //mapperFactory.classMap(Cliente.class, ClienteUpdateRequest.class).byDefault().register();
@@ -217,7 +216,8 @@ public class OrikaConfiguration {
                     ventaResponse.getItems().add(itemResponse);
                 }
                 
-
+                ventaResponse.setCantidadCuotas(venta.getCantidadCuotas());
+                ventaResponse.setCoeficienteTarjeta(venta.getCoeficienteTarjeta());
             }
         }).register();
 
@@ -225,4 +225,3 @@ public class OrikaConfiguration {
         return mapperFactory.getMapperFacade();
     }
 }
-

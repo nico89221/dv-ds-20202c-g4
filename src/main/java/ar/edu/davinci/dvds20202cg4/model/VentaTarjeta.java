@@ -57,4 +57,9 @@ public class VentaTarjeta extends Venta implements Serializable {
         return importeBase + (importeBase * 0.01 + coeficienteTarjeta.doubleValue() * cantidadCuotas.doubleValue());
     }
 
+	public Integer getCantidadCuotas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

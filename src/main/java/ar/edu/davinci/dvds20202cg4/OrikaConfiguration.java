@@ -176,7 +176,6 @@ public class OrikaConfiguration {
                         .id(ventaTarjetaRequest.getClienteId())
                         .build();
                 venta.setCliente(cliente);
-                venta.setCantidadCuotas(ventaTarjetaRequest.getCantidadCuotas());
             }
         }).register();
         //mapperFactory.classMap(Cliente.class, ClienteUpdateRequest.class).byDefault().register();
@@ -218,8 +217,7 @@ public class OrikaConfiguration {
                     ventaResponse.getItems().add(itemResponse);
                 }
                 
-                ventaResponse.setCantidadCuotas(venta.getCantidadCuotas());
-                ventaResponse.setCoeficienteTarjeta(venta.getCoeficienteTarjeta());
+
             }
         }).register();
 

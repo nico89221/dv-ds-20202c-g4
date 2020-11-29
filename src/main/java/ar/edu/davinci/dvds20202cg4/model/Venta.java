@@ -2,6 +2,7 @@ package ar.edu.davinci.dvds20202cg4.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,7 +64,7 @@ public abstract class Venta implements Serializable {
     @Column(name = "vta_id")
     private Long id;
     
-    @ManyToOne(targetEntity = Cliente.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Cliente.class, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name="vta_cli_id", referencedColumnName="cli_id", nullable = false)
     private Cliente cliente;
     
@@ -71,27 +72,31 @@ public abstract class Venta implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha;
     
-
-    @OneToMany(mappedBy="venta", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-@JoinColumn(name="itm_vta_id", referencedColumnName="vta_id", nullable = false)
+    @OneToMany(mappedBy="venta", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
     private List<Item> items;
     
-    
     public abstract Double conRecargo(Double importeBase);
     
+    public String getRazonSocial() {
+        return cliente.getRazonSocial();
+    }
     
     public BigDecimal importeBruto() {
         Double suma = items.stream()
                 .collect(Collectors.summingDouble(item -> item.importe().doubleValue()));
-        return new BigDecimal(suma);
+        return new BigDecimal(suma).setScale(2, RoundingMode.UP);
     }
 
     // Template Method
     public BigDecimal importeFinal() {
         Double suma = items.stream()
         .collect(Collectors.summingDouble(item -> conRecargo(item.importe().doubleValue())));
-        return new BigDecimal(suma);
+        return new BigDecimal(suma).setScale(2, RoundingMode.UP);
+    }
+    
+    public String getImporteFinalStr() {
+        return importeFinal().toString();
     }
     
     public boolean esDeFecha(Date fecha) {
@@ -106,3 +111,4 @@ public abstract class Venta implements Serializable {
         this.items.add(item);
     }
 }    
+

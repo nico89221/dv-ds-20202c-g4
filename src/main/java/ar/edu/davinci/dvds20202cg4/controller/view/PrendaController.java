@@ -32,12 +32,6 @@ public class PrendaController extends TiendaApp {
     private PrendaService prendaService;
     
     
-    @GetMapping
-    public String viewHomePage(Model model) {
-        LOGGER.info("GET - viewHomePage - /index");
-        return "index";
-    }
-    
     @GetMapping(path = "prendas/list")
     public String showPrendaPage(Model model) {
         LOGGER.info("GET - showPrendaPage  - /prendas/list");

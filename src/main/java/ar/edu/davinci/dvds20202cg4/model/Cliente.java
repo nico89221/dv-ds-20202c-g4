@@ -25,14 +25,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
     
-	/**
+    /**
      * 
      */
     private static final long serialVersionUID = -3031284613282783768L;
-	
-	
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -44,5 +43,9 @@ public class Cliente implements Serializable{
 
     @Column(name = "cli_apellido")
     private String apellido;
+
+    public String getRazonSocial() {
+        return nombre + " " + apellido;
+    }
 
 }

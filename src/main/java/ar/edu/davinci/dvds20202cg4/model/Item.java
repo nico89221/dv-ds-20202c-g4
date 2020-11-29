@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 /**
  * Item de Venta
  * 
- * @author Grupo 4
+ * @author Grupo4
  *
  */
 
@@ -38,12 +38,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Item implements Serializable {
-	
-	/**
+    
+    /**
      * 
      */
     private static final long serialVersionUID = -904982985155145732L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -54,13 +54,12 @@ public class Item implements Serializable {
     @JoinColumn(name="itm_vta_id", referencedColumnName="vta_id", nullable = false)
     @JsonBackReference
     private Venta venta;
-
     
     @Column(name = "itm_cantidad")
     private Integer cantidad;
     
-    @ManyToOne(targetEntity = Prenda.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="itm_prd_id", referencedColumnName="prd_id")
+    @ManyToOne(targetEntity = Prenda.class, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name="itm_prd_id", referencedColumnName="prd_id", nullable = false)
     private Prenda prenda;
     
     public BigDecimal importe() {

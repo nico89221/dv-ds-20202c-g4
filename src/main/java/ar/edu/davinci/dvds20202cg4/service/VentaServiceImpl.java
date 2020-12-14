@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.RuntimeErrorException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -122,6 +123,7 @@ public class VentaServiceImpl implements VentaService {
                 .cliente(cliente)
                 .fecha(Calendar.getInstance().getTime())
                 .items(items)
+                .cantidadCuotas(venta.getCantidadCuotas())
                 .coeficienteTarjeta(new BigDecimal(0.01D))
                 .build();
         return ventaTarjetaRepository.save(venta);
@@ -262,4 +264,3 @@ public class VentaServiceImpl implements VentaService {
     }
 
 }
-

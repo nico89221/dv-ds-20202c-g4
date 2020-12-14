@@ -62,4 +62,14 @@ public class VentaTarjeta extends Venta implements Serializable {
 		return null;
 	}
 
+	public void setCantidadCuotas(Integer cantidadCuotas2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public BigDecimal getCoeficienteTarjeta() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

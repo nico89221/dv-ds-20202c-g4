@@ -71,7 +71,7 @@ class PrendaServiceImplTest {
             LOGGER.info("LA PRENDA NO FUE ENCONTRADA");
         }            
         assertNotNull(prenda);
-        assertEquals(prenda.getDescripcion(), "Pantalon Gabardina Beige");
+        assertEquals(prenda.getDescripcion(), "Pantalón Gabardina Beige");
     }
 
     @Test

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import ar.edu.davinci.dvds20202cg4.model.VentaTarjeta;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -28,7 +29,7 @@ import lombok.experimental.SuperBuilder;
 @Table(name="ventas_tarjeta")
 
 
-
+@Data
 @NoArgsConstructor
 @SuperBuilder
 public class VentaTarjeta extends Venta implements Serializable {
